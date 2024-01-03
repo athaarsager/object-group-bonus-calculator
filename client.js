@@ -69,17 +69,19 @@ function calculateIndividualEmployeeBonus( employee ) {
     bonus = bonus + "%";
   }
   if (employee.annualSalary >= 65000) {
+    bonus = parseInt(bonus);//double checks that bonus is a number in case it was processed through above if
     bonus -= 1;
     bonus = bonus + "%";
   }
-  if (bonus >= 13) {
+  if (parseInt(bonus) >= 13) {//need to use parseInt on these to re-convert to number for comparison
     bonus = "13%";
   }
-  if (bonus <= 0) {
+  if (parseInt(bonus) <= 0) {
     bonus = "0%";
   }
 
   employee.bonusPercentage = bonus;
+  
   //calculating total bonus:
 
   employee.totalBonus = (parseInt(bonus) * .01) * parseInt(employee.annualSalary);
