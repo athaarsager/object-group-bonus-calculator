@@ -81,6 +81,15 @@ function calculateIndividualEmployeeBonus( employee ) {
 
   employee.totalBonus = (employee.bonusPercentage * .01) * employee.annualSalary;
 
+
+  //calculating total compensation:
+  employee.totalCompensation = employee.totalBonus + employee.annualSalary;
+
+  //remove old object keys employeeNumber, annualSalary, and reviewRating
+  
+  delete employee.employeeNumber;
+  delete employee.annualSalary;
+  delete employee.reviewRating;
   // return new object with bonus results
 
   return employee;
