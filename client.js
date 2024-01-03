@@ -76,6 +76,11 @@ function calculateIndividualEmployeeBonus( employee ) {
   if (employee.bonusPercentage <= 0) {
     employee.bonusPercentage = 0;
   }
+
+  //calculating total bonus:
+
+  employee.totalBonus = (employee.bonusPercentage * .01) * employee.annualSalary;
+
   // return new object with bonus results
 
   return employee;
