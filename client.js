@@ -72,18 +72,18 @@ function calculateIndividualEmployeeBonus( employee ) {
   }
   if (employee.bonusPercentage >= 13) {
     employee.bonusPercentage = 13;
-  }s
+  }
   if (employee.bonusPercentage <= 0) {
     employee.bonusPercentage = 0;
   }
 
   //calculating total bonus:
 
-  employee.totalBonus = (employee.bonusPercentage * .01) * employee.annualSalary;
+  employee.totalBonus = (employee.bonusPercentage * .01) * parseInt(employee.annualSalary);
 
 
   //calculating total compensation:
-  employee.totalCompensation = employee.totalBonus + employee.annualSalary;
+  employee.totalCompensation = employee.totalBonus + parseInt(employee.annualSalary);
 
   //remove old object keys employeeNumber, annualSalary, and reviewRating
   
@@ -92,6 +92,19 @@ function calculateIndividualEmployeeBonus( employee ) {
   delete employee.reviewRating;
   // return new object with bonus results
 
+  let loggedEmployee = JSON.stringify(employee);
+  console.log(loggedEmployee);
   return employee;
-
 }
+
+calculateIndividualEmployeeBonus({
+  name: 'Atticus',
+  employeeNumber: '2405',
+  annualSalary: '47000',
+  reviewRating: 3
+});
+
+//should output: 
+//bonusPercentage: 9%
+//totalBonus: 4230
+//totalCompensation: 51230
