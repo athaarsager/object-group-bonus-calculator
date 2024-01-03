@@ -50,8 +50,34 @@ console.log('array of employee data: ',  employees );
 //
 function calculateIndividualEmployeeBonus( employee ) {  
   // your logic here
-  
-  
+  const rating = employee.reviewRating;
+
+  //calculating bonus percent based on rating
+  if (rating <= 2) {
+    employee.bonusPercentage = 0;
+  } else if (rating === 3) {
+    employee.bonusPercentage = 4;
+  } else if (rating === 4) {
+    employee.bonusPercentage = 6;
+  } else if (rating === 5) {
+    employee.bonusPercentage = 10;
+  }
+
+  //adjusting bonus baseed on other factors
+  if (employee.employeeNumber.length === 4) {
+    employee.bonusPercentage += 5;
+  }
+  if (employee.annualSalary >= 65000) {
+    employee.bonusPercentage -= 1;
+  }
+  if (employee.bonusPercentage >= 13) {
+    employee.bonusPercentage = 13;
+  }s
+  if (employee.bonusPercentage <= 0) {
+    employee.bonusPercentage = 0;
+  }
   // return new object with bonus results
+
+  return employee;
 
 }
