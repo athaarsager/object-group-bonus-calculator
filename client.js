@@ -54,29 +54,36 @@ function calculateIndividualEmployeeBonus( employee ) {
 
   //calculating bonus percent based on rating
   if (rating <= 2) {
-    employee.bonusPercentage = 0;
+    employee.bonusPercentage = "0%";
   } else if (rating === 3) {
-    employee.bonusPercentage = 4;
+    employee.bonusPercentage = "4%";
   } else if (rating === 4) {
-    employee.bonusPercentage = 6;
+    employee.bonusPercentage = "6%";
   } else if (rating === 5) {
-    employee.bonusPercentage = 10;
+    employee.bonusPercentage = "10%";
   }
+
+  let bonus = parseInt(employee.bonusPercentage);
+  console.log("This is the employee's current bonus percent:", bonus);
 
   //adjusting bonus baseed on other factors
   if (employee.employeeNumber.length === 4) {
-    employee.bonusPercentage += 5;
+    bonus += 5;
+    bonus = bonus + "%";
+    console.log("This is the adjusted bonus:", employee.bonusPercentage);
   }
   if (employee.annualSalary >= 65000) {
-    employee.bonusPercentage -= 1;
+    bonus -= 1;
+    bonus = bonus + "%";
   }
-  if (employee.bonusPercentage >= 13) {
-    employee.bonusPercentage = 13;
+  if (bonus >= 13) {
+    bonus = "13%";
   }
-  if (employee.bonusPercentage <= 0) {
-    employee.bonusPercentage = 0;
+  if (bonus <= 0) {
+    bonus = "0%";
   }
 
+  employee.bonusPercentage = bonus;
   //calculating total bonus:
 
   employee.totalBonus = (employee.bonusPercentage * .01) * parseInt(employee.annualSalary);
