@@ -86,7 +86,7 @@ function calculateIndividualEmployeeBonus( employee ) {
   employee.bonusPercentage = bonus;
   //calculating total bonus:
 
-  employee.totalBonus = (employee.bonusPercentage * .01) * parseInt(employee.annualSalary);
+  employee.totalBonus = (parseInt(bonus) * .01) * parseInt(employee.annualSalary);
 
 
   //calculating total compensation:
